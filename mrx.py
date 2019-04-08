@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python2
 """ mrx: mass remote execute """
 from __future__ import print_function
 from __future__ import division
