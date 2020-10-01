@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3.7
 """ mrx: mass remote execute """
 from __future__ import print_function
 from __future__ import division
@@ -24,6 +24,10 @@ class StreamLogger(object):
         self._buf = ''
 
     def write(self, msg):
+        try:
+            msg = msg.decode()
+        except AttributeError:
+            pass
         self._buf += msg.replace('\x0d','')
         if '\n' not in self._buf:
             return
@@ -61,6 +65,8 @@ class Host(object):
         except ExceptionPxssh as e:
             if e.value == 'password refused':
                 raise LoginError('password')
+            elif e.value == 'Could not establish connection to host':
+                raise LoginError('connection')
             else:
                 raise e
         except EOF:
