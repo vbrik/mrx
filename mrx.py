@@ -1,4 +1,4 @@
-#!/usr/bin/python3.7
+#!/usr/bin/python3.9
 """ mrx: mass remote execute """
 from __future__ import print_function
 from __future__ import division
